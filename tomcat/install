@@ -1,0 +1,78 @@
+1) Descargar tomcat8 desde el sitio oficial
+2) Descomprimir en directorio /opt/tomcat/
+3) Crear grupo tomcat
+   sudo groupadd tomcat
+4) Crear usuario tomcat
+   sudo useradd -s /bin/false -g tomcat -d /opt/tomcat tomcat
+5) Actualizar perimisos
+ cd /opt/tomcat/apache-tomcat-8.0.21
+ 
+Give the tomcat user write access to the conf directory, and read access to the files in that directory:
+
+ sudo chgrp -R tomcat conf
+ sudo chmod g+rwx conf
+ sudo chmod g+r conf/*
+
+
+Make the tomcat user the owner of the webapps, work, temp, and logs directories:
+
+ sudo chown -R tomcat webapps/ work/ temp/ logs/
+
+6) Setear JAVA_HOME
+
+verificar JAVA_HOME:  echo $JAVA_HOME
+
+editar: vim /etc/environment
+
+agregar:  JAVA_HOME="/opt/java/jdk1.8.0_92/"
+
+recargar: source /etc/environment
+
+7) crear servicio
+
+  sudo vim etc/systemd/system/tomcat8.service
+
+codigo: (verificar paths)
+
+[Unit]
+Description=Apache Tomcat Web Application Container
+After=network.target
+
+[Service]
+Type=forking
+
+Environment=JAVA_HOME=/opt/java/jdk1.8.0_92/
+Environment=CATALINA_PID=/opt/tomcat/apache-tomcat-8.0.21/temp/tomcat.pid
+Environment=CATALINA_HOME=/opt/tomcat/apache-tomcat-8.0.21
+Environment=CATALINA_BASE=/opt/tomcat/apache-tomcat-8.0.21
+Environment='CATALINA_OPTS=-Xms512M -Xmx1024M -server -XX:+UseParallelGC'
+Environment='JAVA_OPTS=-Djava.awt.headless=true -Djava.security.egd=file:/dev/./urandom'
+
+ExecStart=/opt/tomcat/apache-tomcat-8.0.21/bin/startup.sh
+ExecStop=/opt/tomcat/apache-tomcat-8.0.21/bin/shutdown.sh
+
+User=tomcat
+Group=tomcat
+RestartSec=10
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+
+
+
+8) recargar demonio systemd
+
+ sudo systemctl daemon-reload
+
+
+Start the Tomcat service by typing:
+
+sudo systemctl start tomcat
+
+Double check that it started without errors by typing:
+
+sudo systemctl status tomcat
+
+
+

@@ -1,0 +1,24 @@
+
+1) In server.xml, change the line
+
+ <Connector connectionTimeout="20000" port="8080" protocol="HTTP/1.1" redirectPort="8443"/> to have port="80".
+
+
+2) Install the recommended authbind package, with a command like:
+
+sudo apt-get install authbind
+
+3) agregar puerto 80 a authbind
+ cd /etc/authbind/byport
+ touch 80
+ chown tomcat 80
+ chmod 744 80
+
+4) AUTHBIND=yes to bin/setenv.sh (create if not there)
+
+cambios posibles en caso de fallar:
+Make IPv4 the default (authbind does not currently support IPv6). To do so, create the file TOMCAT/bin/setenv.sh with the following content: CATALINA_OPTS="-Djava.net.preferIPv4Stack=true" 
+
+5) Change startup.sh
+exec authbind --deep "$PRGDIR"/"$EXECUTABLE" start "$@"
+# OLD: exec "$PRGDIR"/"$EXECUTABLE" start "$@"
