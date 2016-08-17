@@ -1,0 +1,40 @@
+1) cargar virtualhost en server.xml
+
+<Host name="localhost"  appBase="webapps" unpackWARs="true" autoDeploy="true">
+        <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs"
+               prefix="localhost_access_log." suffix=".txt"
+               pattern="%h %l %u %t &quot;%r&quot; %s %b" />
+
+</Host>
+
+<Host name="www.bitcross.net" appBase="webapps/bitcross" unpackWARs="true" autoDeploy="true">
+                 <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs"
+                        prefix="bitcross_access_log." suffix=".txt"
+                        pattern="%h %l %u %t &quot;%r&quot; %s %b"/>
+</Host>
+
+<Host name="www.capacitacionespmp.com" appBase="webapps/capacitacionespmp" unpackWARs="true" autoDeploy="true">
+                 <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs"
+                        prefix="capacitacionespmp_access_log." suffix=".txt"
+                        pattern="%h %l %u %t &quot;%r&quot; %s %b"/>
+</Host>
+
+
+2) crear configuracion xml
+
+cd conf/Catalina/
+
+mkdir www.bitcross.net
+mkdir www.capacitacionespmp.com
+
+crear ROOT.xml en ambos host
+
+vim www.bitcross.net/ROOT.xml
+
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path=""/>
+
+
+3) reiniciar el servidor
+
+service tomcat8 restart
