@@ -1,0 +1,28 @@
+mpd_host=     "192.168.88.242"
+mpd_port=     "6600"
+mpd_music_dir=     "~/Music"
+#mpd_music_dir =             “~/Music”
+playlist_display_mode =         "columns"
+song_status_format =             "%t{ – %a}{ – %b}{ (%y)}"
+song_window_title_format =         "MPD: {%a – }{%t}|{%f}"
+song_columns_list_format =         "(7)[green]{l} (35)[white]{t} (28)[green]{a} (28)[white]{b}"
+user_interface =             "alternative"
+progressbar_look =             "-|-"
+display_screens_numbers_on_start =     "no"
+allow_physical_files_deletion =     "no"
+allow_physical_directories_deletion =     "no"
+colors_enabled =             "yes"
+progressbar_color =             "red"
+volume_color =                 "yellow"
+header_window_color =            0
+main_window_color =             0
+#now_playing_prefix =             “$b$u”
+#now_playing_suffix =             “$/b$/u”
+
+#visualizacion
+visualizer_fifo_path =         "/tmp/mpd.fifo"
+visualizer_output_name =     "my_fifo"
+visualizer_sync_interval =     "30"
+visualizer_in_stereo =         "yes"
+#visualizer_type =         “wave” (spectrum/wave)
+visualizer_type =         "spectrum" (spectrum/wave)
