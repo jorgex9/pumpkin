@@ -435,7 +435,7 @@
           <enabled>false</enabled>
           <name>Logout</name>
         </startupnotify>
-        <command>bl-exit</command>
+        <command>lxsession-logout</command>
       </action>
     </keybind>
     <keybind key="W-Escape">
