@@ -1,0 +1,37 @@
+[global_config]
+  title_receive_bg_color = "#c9001a"
+  enabled_plugins = TerminalShot, LaunchpadCodeURLHandler, APTURLHandler, LaunchpadBugURLHandler
+  title_transmit_bg_color = "#000000"
+  title_inactive_bg_color = "#000000"
+[keybindings]
+  hide_window = <Shift><Control>a
+[profiles]
+  [[default]]
+    scrollbar_position = hidden
+    palette = "#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#002b36:#cb4b16:#586e75:#d0c407:#839496:#494949:#93a1a1:#fdf6e3"
+    background_image = None
+    background_darkness = 0.4
+    urgent_bell = True
+    use_system_font = False
+    cursor_color = "#ff4600"
+    foreground_color = "#ff4600"
+    scroll_on_output = False
+    show_titlebar = False
+    color_scheme = custom
+    font = monofur for Powerline 11
+    audible_bell = True
+    scrollback_lines = 5000
+    scrollback_infinite = True
+  [[morannon]]
+    background_image = None
+    use_theme_colors = True
+[layouts]
+  [[default]]
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+    [[[window0]]]
+      type = Window
+      parent = ""
+      size = 680, 540
+[plugins]
