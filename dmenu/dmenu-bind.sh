@@ -30,4 +30,4 @@ if [[ $# = 1 ]]; then
     esac
 fi
 
-dmenu_run -b -i -nb '#151617' -nf '#FF9C00' -sb '#FF9C00' -sf '#151617'
+dmenu_run -b -i -nb '#151617' -nf '#1fbde0' -sb '#076073' -sf '#ffffff' -fn 'monofur for Powerline Regular-9'
